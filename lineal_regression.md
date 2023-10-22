@@ -23,7 +23,7 @@ $`\ \mathbf{ y  = \beta_0 + \beta_1x_1 + \beta_2x_2 + } ... + \beta_nx_n +  \eps
 
 or in vector notation:  
 
- $`\  \mathbf{Y = X \beta + \epsilon}  `$  where elements of $`\ \mathbf{\epsilon} `$ are in $`\ \mathbf{ \mathcal{N} (0, \sigma^2) } `$
+ $`\  \mathbf{Y = X \beta + \epsilon}  `$  where elements of $`\ \mathbf{\epsilon} `$ are in $`\ \mathbf{ \mathcal{N} (0, \sigma^2 I_n) } `$
 
 
 ### Assumptions of Linear Regression:
@@ -170,28 +170,18 @@ Where $`\ \lambda_1 `$ and $`\ \lambda_2 `$ control the strength of L1 and L2 pe
 
 
 
-## 6. Write a closed-form solution for linear regression with L2 regularisation, L1 regularisation and without regularisation? 
-
-## 7.
-## 8.
-## 9.
-## 10.
-
-## . How would you estimate the error in linear regression from the beta?
-
-
-
 ## 5. What is the difference between regressing Y on X vs X on Y? How do the two $`\ R^2 `$ relate to each other?
 
-In order to answer this question it is important to organise thought process and come up with a basic set of assumptions, which could make answering that question easier. For example: 
-- make assumptions
+In order to answer this question it is important to organise your thought process and come up with a basic set of assumptions, which could make answering that question easier. For example: 
+- assumptions that simplify regression formula (eg. centered data no intercept)
 - write down two models
 - derive betas
 - look at the problem from geometric perspective
 - analyse $`\ R^2 `$
 
 Assumptions:
-$`\ E[x]=E[y]=0 `$
+1. $`x,y \in R `$ (univariate linear regression, one that focuses on determining relationship between one independent variable and one dependent variable.) 
+2. $`\ E[x]=E[y]=0 `$ ( data is centred, so that we don't have to deal with the intercept $` \beta_0 `$ coefficient ). 
 
 Model 1
 
@@ -202,3 +192,18 @@ Model 2
 
 $$ \eqalign{ x&=\beta_2 y + \varepsilon_2, \quad \varepsilon_2 \sim \mathbb{N}(0,\sigma_2 I_n)  \\
 O L S: \hat{\beta}_1 &=\frac{y^T x}{y^{\top} y} \approx \frac{Cov(x, y)}{\mathbb{V}(y)} } $$
+
+When are the two regression lines the same?
+1. Option
+2. Beta estimates are the same
+3. 
+
+$$ \eqalign{ \beta_1 &=\beta_2 \\
+\frac{Cov(x, y)}{\mathbb{V}(x)} &= \frac{Cov(y, x)}{\mathbb{V}(y)}  \\
+\mathbb{V}(x) &= \mathbb{V}(y) } $$
+
+Variances in x and y need to be the same, which would be the case when both x and y have been standardised. 
+
+3. 
+
+
