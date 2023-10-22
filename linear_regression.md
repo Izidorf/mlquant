@@ -1,6 +1,14 @@
-## 1. What is linear regression and what are the model assumptions?
+## <a name='toc'>Table of Contents</a>
+ * [What is linear regression and what are the model assumptions?](q1)
+ * [What happens if two features in linear regression are correlated and how to deal with this situation?](q2)
+ * [What is $`\ R^2 `$?](q3)
+ * [What is L1 and L2 Regularization?](q4)
+ * [What is the difference between regressing Y on X vs X on Y and how do the two $`\ R^2 `$ relate to each other?](q5)
 
-Linear regression is a linear approach to modeling the relationship between a dependent variable and one or more independent variables. It is a foundational method in statistics and machine learning used for predicting numerical outcomes.
+
+## 1. [](#toc) <a name=q1>What is linear regression and what are the model assumptions?</a> 
+
+Linear regression is a linear approach to modelling the relationship between a dependent variable and one or more independent variables. It is a foundational method in statistics and machine learning used for predicting numerical outcomes.
 
 ### Simple Linear Regression:
 
@@ -39,7 +47,7 @@ or in vector notation:
 If these assumptions are violated, the reliability and interpretability of the regression coefficients may be compromised. Diagnostic tests and plots can check for these assumptions, and there are remedies to address violations.
 
 
-## 2. What happens if two features in linear regression are correlated and how to deal with this situation?
+## 2. [](#toc) <a name=q2>What happens if two features in linear regression are correlated and how to deal with this situation?</a> 
 
 When two or more features (or independent variables) in a linear regression model are correlated, it leads to a phenomenon called **collinearity or multicollinearity**. Here's what happens and its implications:
 
@@ -76,7 +84,7 @@ While perfect multicollinearity results in infinite variance for the OLS estimat
 
 In summary, multicollinearity can be a concern in linear regression, especially when the goal is inference about individual predictors. It's essential to check for multicollinearity when building a regression model and to take appropriate measures if it's present.
 
-## 3. What is $`\ R^2 `$?
+## 3. [](#toc) <a name=q3>What is $`\ R^2 `$?</a> 
 
 $`\ \mathbf{R^2} `$ (pronounced "R-squared") is the coefficient of determination. It's a statistical measure used in the context of regression analysis to assess how well the regression model fits the observed data. Specifically, $`\ \mathbf{R^2} `$ represents the proportion of the variance in the dependent variable that is predictable from the independent variables.
 
@@ -121,7 +129,7 @@ In summary, $`\ \mathbf{R^2} `$ provides a measure of how well the observed outc
 
 
 
-## 4. What is is L1 and L2 Regularization?
+## 4.  [](#toc) <a name=q4> What is L1 and L2 Regularization? `$?</a> 
 
 L1 and L2 regularization are techniques used to prevent overfitting in machine learning models, especially in linear regression. They work by adding penalty terms to the original loss function, constraining the magnitude of the coefficients in the model. 
 
@@ -170,7 +178,7 @@ Where $`\ \lambda_1 `$ and $`\ \lambda_2 `$ control the strength of L1 and L2 pe
 
 
 
-## 5. What is the difference between regressing Y on X vs X on Y? How do the two $`\ R^2 `$ relate to each other?
+## 5. [](#toc) <a name=q5> What is the difference between regressing Y on X vs X on Y and how do the two $`\ R^2 `$ relate to each other? `$?</a>  
 
 Conceptually the main difference in the two OLS models is that we are minimizing different quantities - squares of horizonal vs vertical residuals (see Figure below).
 
