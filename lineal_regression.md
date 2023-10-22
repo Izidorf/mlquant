@@ -172,38 +172,60 @@ Where $`\ \lambda_1 `$ and $`\ \lambda_2 `$ control the strength of L1 and L2 pe
 
 ## 5. What is the difference between regressing Y on X vs X on Y? How do the two $`\ R^2 `$ relate to each other?
 
+Conceptually the main difference in the two OLS models is that we are minimizing different quantities - squares of horizonal vs vertical residuals (see Figure below).
+
+
+
 In order to answer this question it is important to organise your thought process and come up with a basic set of assumptions, which could make answering that question easier. For example: 
-- assumptions that simplify regression formula (eg. centered data no intercept)
+- assumptions that simplify regression formula (e.i. centered X and Y data, mean=0 )
 - write down two models
 - derive betas
 - look at the problem from geometric perspective
 - analyse $`\ R^2 `$
 
-Assumptions:
+**Assumptions:**
 1. $`x,y \in R `$ (univariate linear regression, one that focuses on determining relationship between one independent variable and one dependent variable.) 
 2. $`\ E[x]=E[y]=0 `$ ( data is centred, so that we don't have to deal with the intercept $` \beta_0 `$ coefficient ). 
 
-Model 1
+**Model 1**
 
 $$ \eqalign{ y&=\beta_1 x + \varepsilon_1, \quad \varepsilon_1 \sim \mathbb{N}(0,\sigma_1 I_n)  \\
 O L S: \hat{\beta}_1 &=\frac{x^T y}{x^{\top} x} \approx \frac{Cov(x, y)}{\mathbb{V}(x)} } $$
 
-Model 2
+**Model 2**
 
 $$ \eqalign{ x&=\beta_2 y + \varepsilon_2, \quad \varepsilon_2 \sim \mathbb{N}(0,\sigma_2 I_n)  \\
 O L S: \hat{\beta}_1 &=\frac{y^T x}{y^{\top} y} \approx \frac{Cov(x, y)}{\mathbb{V}(y)} } $$
 
-When are the two regression lines the same?
-1. Option
+**When are the two regression lines the same?**
+1. Regressions lines coincide in the figure above
+
+$$ \eqalign{ \alpha_1+\alpha_2 &= \frac{\pi}{2} \\
+\cos (\alpha_1+\alpha_2) &=0  \\
+\cos \alpha_1 \cos \alpha_2-\sin \alpha_1 \cdot \sin \alpha_2 &=0 \\
+1-\tan \alpha_1 \cdot \tan \alpha_2 &= 0 \\
+\tan \alpha_1 \cdot \tan \alpha_2 &=1 \\
+\frac{Cov^2 (x, y)}{\mathbb{V}(x) \mathbb{V}(y)} &=1 } $$
+
+So if  X and Y are standardized (i.e., both have mean = 0 and standard deviation = 1) then two betas are the same. If data only has mean = 0 but standar deviation is not 1, then two betas are the same if the two variables are perfectly correlated -1 or 1.
+
+
 2. Beta estimates are the same
-3. 
 
 $$ \eqalign{ \beta_1 &=\beta_2 \\
 \frac{Cov(x, y)}{\mathbb{V}(x)} &= \frac{Cov(y, x)}{\mathbb{V}(y)}  \\
 \mathbb{V}(x) &= \mathbb{V}(y) } $$
 
-Variances in x and y need to be the same, which would be the case when both x and y have been standardised. 
+Variances in x and y need to be the same, which would be the case when both x and y have been standardised. If variances x and y aren't the same, then two models have different slope. 
 
-3. 
+**Let's also analyse the coefficients of determinantion R2.**
+
+$$ \begin{aligned} R_1^2 &=\frac{T S S_1-R S S_1}{T S S_1}=\frac{y^{\top} y-y^{\top}(I-H) y}{y^{\top} y}= \\
+&=\frac{y^{\top} H y}{y^{\top} y}=\frac{y^{\top}\left(x\left(x^{\top} x\right)^{-1} x^{\top}\right) y}{y^{\top} y}= \\
+&=\frac{y^{\top} x x^{\top} y}{\left(y^{\top} y\right)\left(x^{\top} x\right)}=\frac{\left(x^{\top} y\right)^2}{\|y\|_2^2\|x\|_2^2}
+\end{aligned} $$
+
+** Further Reading**
+https://www.jstor.org/stable/1391254
 
 
