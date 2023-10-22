@@ -85,15 +85,15 @@ $`\ \mathbf{R^2} `$ (pronounced "R-squared") is the coefficient of determination
 In the context of a simple linear regression:
 
 1. **SST** (Total Sum of Squares) represents the total variance in the dependent variable, and is calculated as:
-$`\ SST = \sum_{i=1}^{n} (y_i - \bar{y})^2 `$
+$`\ SST = \sum\limits_{i=1}^{n} (y_i - \bar{y})^2 `$
 where $`\ y_i `$ are the observed values, $`\ \bar{y} `$ is the mean of the observed values, and $`\ n `$ is the number of observations.
 
 2. **SSR** (Sum of Squares due to Regression) represents the amount of variance explained by the regression model, and is calculated as:
-$`\ SSR = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 `$
+$`\ SSR = \sum\limits_{i=1}^{n} (\hat{y}_i - \bar{y})^2 `$
 where $`\ \hat{y}_i `$ are the predicted values from the regression model.
 
 3. **SSE** (Sum of Squares of Errors) represents the variance that's not explained by the model, and is calculated as:
-$`\ SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 `$
+$`\ SSE = \sum\limits_{i=1}^{n} (y_i - \hat{y}_i)^2 `$
 
 Given the above, $`\ \mathbf{R^2} `$ is defined as:
 $`\ R^2 = \frac{SSR}{SST} = 1 - \frac{SSE}{SST} `$
@@ -119,13 +119,86 @@ $`\ R^2 = \frac{SSR}{SST} = 1 - \frac{SSE}{SST} `$
 In summary, $`\ \mathbf{R^2} `$ provides a measure of how well the observed outcomes are replicated by the model, based on the proportion of total variation of outcomes explained by the model. However, like all statistical metrics, it should be interpreted with caution and in the context of the specific analysis and dataset.
 
 
-## 4. What is the difference between regressing Y on X vs X on Y? How do the two $`\ R^2 `$ relate to each other?
 
+
+## 4. What is is L1 and L2 Regularization?
+
+L1 and L2 regularization are techniques used to prevent overfitting in machine learning models, especially in linear regression. They work by adding penalty terms to the original loss function, constraining the magnitude of the coefficients in the model. 
+
+### L1 Regularization (Lasso):
+
+**Formulation:**  
+$`\ \text{Loss} = \text{Original Loss} + \lambda \sum\limits_{i=1}^{p} | \beta_i | `$
+
+Where:
+- $`\ \beta_i `$ are the model coefficients.
+- $`\ \lambda `$ is a positive regularization parameter. Higher values of $`\ \lambda `$ result in stronger regularization.
+- $`\ p `$ is the number of features in the model.
+
+**Characteristics:**
+- Produces sparse solutions. Some coefficients can become exactly zero, effectively leading to feature selection.
+- Often used when we have a large number of features and we believe many of them are irrelevant or redundant.
+- Because of its property of setting coefficients to zero, L1 can be less stable in the presence of highly correlated features; it might select one feature and ignore the others.
+
+### L2 Regularization (Ridge):
+
+**Formulation:**  
+$`\ \text{Loss} = \text{Original Loss} + \lambda \sum\limits_{i=1}^{p} \beta_i^2 `$
+
+Where:
+- $`\ \beta_i `$ are the model coefficients.
+- $`\ \lambda `$ is a positive regularization parameter. Higher values of $`\ \lambda `$ result in stronger regularization.
+- $`\ p `$ is the number of features in the model.
+
+**Characteristics:**
+- Does not produce sparse solutions. Coefficients are shrunk toward zero, but they rarely become exactly zero.
+- Tends to handle multicollinearity better than L1 by distributing the coefficient magnitude among correlated features.
+- Generally more stable than L1 when features are correlated.
+
+### Elastic Net:
+
+
+Elastic Net is a combination of L1 and L2 regularization. It adds both L1 and L2 penalty terms to the loss function:
+
+$`\ \text{Loss} = \text{Original Loss} + \lambda_1 \sum\limits_{i=1}^{p} | \beta_i | + \lambda_2 \sum\limits_{i=1}^{p} \beta_i^2 `$
+
+Where $`\ \lambda_1 `$ and $`\ \lambda_2 `$ control the strength of L1 and L2 penalties, respectively.
+
+**Characteristics:**
+- Combines the properties of L1 and L2 regularization.
+- Can produce sparse solutions (due to the L1 term) while also handling multicollinearity (due to the L2 term).
+
+
+
+## 6. Write a closed-form solution for linear regression with L2 regularisation, L1 regularisation and without regularisation? 
+
+## 7.
+## 8.
+## 9.
+## 10.
 
 ## . How would you estimate the error in linear regression from the beta?
 
-R2 (pronounced "R-squared") is the coefficient of determination. It's a statistical measure used in the context of regression analysis to assess how well the regression model fits the observed data. Specifically, R2R2 represents the proportion of the variance in the dependent variable that is predictable from the independent variables.
 
 
+## 5. What is the difference between regressing Y on X vs X on Y? How do the two $`\ R^2 `$ relate to each other?
 
+In order to answer this question it is important to organise thought process and come up with a basic set of assumptions, which could make answering that question easier. For example: 
+- make assumptions
+- write down two models
+- derive betas
+- look at the problem from geometric perspective
+- analyse $`\ R^2 `$
 
+Assumptions:
+$`\ E[x]=E[y]=0 `$
+
+Model 1
+
+$$ \eqalign{ y&=\beta_1 x + \varepsilon_1, \quad \varepsilon_1 \sim \mathbb{N}(0,\sigma_1 I_n)  \\
+O L S: \hat{\beta}_1 &=\frac{x^T y}{x^{\top} x} \approx \frac{Cov(x, y)}{\mathbb{V}(x)} } $$
+
+Model 2
+
+$$ \eqalign{ x&=\beta_2 y + \varepsilon_2, \quad \varepsilon_2 \sim \mathbb{N}(0,\sigma_2 I_n)  \\
+O L S: \hat{\beta}_1 &=\frac{y^T x}{y^{\top} y} \approx \frac{Cov(x, y)}{\mathbb{V}(y)} } $$
