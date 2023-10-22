@@ -199,4 +199,4 @@ O L S: \hat{\beta}_1 &=\frac{y^T x}{y^{\top} y} \approx \frac{Cov(x, y)}{\mathbb
 
 **When are the two regression lines the same?**
 
-The rest of the answer coming soon
+Can you answer the rest of the question before the rest of the solution is provided?
