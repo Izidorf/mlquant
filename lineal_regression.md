@@ -76,7 +76,56 @@ While perfect multicollinearity results in infinite variance for the OLS estimat
 
 In summary, multicollinearity can be a concern in linear regression, especially when the goal is inference about individual predictors. It's essential to check for multicollinearity when building a regression model and to take appropriate measures if it's present.
 
-## What is $`\ R^2 `$?
+## 3. What is $`\ R^2 `$?
+
+$`\ \mathbf{R^2} `$ (pronounced "R-squared") is the coefficient of determination. It's a statistical measure used in the context of regression analysis to assess how well the regression model fits the observed data. Specifically, $`\ \mathbf{R^2} `$ represents the proportion of the variance in the dependent variable that is predictable from the independent variables.
+
+### Calculation:
+
+In the context of a simple linear regression:
+
+1. **SST** (Total Sum of Squares) represents the total variance in the dependent variable, and is calculated as:
+$`\ SST = \sum_{i=1}^{n} (y_i - \bar{y})^2 `$
+where $`\ y_i `$ are the observed values, $`\ \bar{y} `$ is the mean of the observed values, and $`\ n `$ is the number of observations.
+
+2. **SSR** (Sum of Squares due to Regression) represents the amount of variance explained by the regression model, and is calculated as:
+$`\ SSR = \sum_{i=1}^{n} (\hat{y}_i - \bar{y})^2 `$
+where $`\ \hat{y}_i `$ are the predicted values from the regression model.
+
+3. **SSE** (Sum of Squares of Errors) represents the variance that's not explained by the model, and is calculated as:
+$`\ SSE = \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 `$
+
+Given the above, $`\ \mathbf{R^2} `$ is defined as:
+$`\ R^2 = \frac{SSR}{SST} = 1 - \frac{SSE}{SST} `$
+
+### Interpretation:
+
+- An $`\ \mathbf{R^2} `$ value of 1 indicates that the regression model perfectly explains the variability of the dependent variable around its mean. In other words, all of the variance in the dependent variable is captured by the model.
+  
+- An $`\ \mathbf{R^2} `$ value of 0 indicates that the model does not explain any of the variability of the dependent variable around its mean.
+
+- Generally, a higher $`\ \mathbf{R^2} `$ suggests a better fit of the model to the data. However, a high $`\ \mathbf{R^2} `$ does not necessarily mean the model is appropriate. For example, if a model is overfitted, it might have a high $`\ \mathbf{R^2} `$ on the training data but perform poorly on new, unseen data.
+
+### Caveats:
+
+1. **Doesn’t Imply Causation**: A high $`\ \mathbf{R^2} `$ value doesn’t imply causation between the independent and dependent variables.
+
+2. **Comparing Models**: While $`\ \mathbf{R^2} `$ can be useful for comparing different models on the same dataset, it may not be ideal for comparing models across different datasets.
+
+3. **Adjusted $`\ \mathbf{R^2} `$**: This is a modification of $`\ \mathbf{R^2} `$ that adjusts for the number of predictors in a model. As more predictors are added to a model, $`\ \mathbf{R^2} `$ will generally increase (even if those predictors are not truly meaningful). Adjusted $`\ \mathbf{R^2} `$ takes into account the complexity of the model and can decrease if irrelevant predictors are added.
+
+4. **Limitations in Nonlinear Models**: $`\ \mathbf{R^2} `$ is most interpretable in the context of linear regression. In nonlinear models, the interpretation of $`\ \mathbf{R^2} `$ can be less straightforward.
+
+In summary, $`\ \mathbf{R^2} `$ provides a measure of how well the observed outcomes are replicated by the model, based on the proportion of total variation of outcomes explained by the model. However, like all statistical metrics, it should be interpreted with caution and in the context of the specific analysis and dataset.
+
+
+## 4. What is the difference between regressing Y on X vs X on Y? How do the two $`\ R^2 `$ relate to each other?
+
 
 ## . How would you estimate the error in linear regression from the beta?
+
+R2 (pronounced "R-squared") is the coefficient of determination. It's a statistical measure used in the context of regression analysis to assess how well the regression model fits the observed data. Specifically, R2R2 represents the proportion of the variance in the dependent variable that is predictable from the independent variables.
+
+
+
 
